@@ -37,7 +37,7 @@ namespace OOP_Cursach_Sakhno.ui
             this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button3 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
@@ -46,6 +46,8 @@ namespace OOP_Cursach_Sakhno.ui
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,6 +67,7 @@ namespace OOP_Cursach_Sakhno.ui
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -91,7 +94,7 @@ namespace OOP_Cursach_Sakhno.ui
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(281, 78);
+            this.textBox4.Location = new System.Drawing.Point(271, 78);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(117, 23);
@@ -118,7 +121,7 @@ namespace OOP_Cursach_Sakhno.ui
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.Control;
-            this.panel7.Controls.Add(this.textBox6);
+            this.panel7.Controls.Add(this.numericUpDown1);
             this.panel7.Controls.Add(this.button3);
             this.panel7.Controls.Add(this.label7);
             this.panel7.Controls.Add(this.textBox8);
@@ -131,12 +134,17 @@ namespace OOP_Cursach_Sakhno.ui
             this.panel7.Size = new System.Drawing.Size(568, 300);
             this.panel7.TabIndex = 8;
             // 
-            // textBox6
+            // numericUpDown1
             // 
-            this.textBox6.Location = new System.Drawing.Point(345, 157);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 23);
-            this.textBox6.TabIndex = 4;
+            this.numericUpDown1.Location = new System.Drawing.Point(341, 160);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown1.TabIndex = 8;
             // 
             // button3
             // 
@@ -203,6 +211,8 @@ namespace OOP_Cursach_Sakhno.ui
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.panel2);
@@ -211,6 +221,26 @@ namespace OOP_Cursach_Sakhno.ui
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(631, 619);
             this.panel1.TabIndex = 18;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(543, 527);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 51);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "Выселить из дома";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(327, 523);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 55);
+            this.button4.TabIndex = 6;
+            this.button4.Text = "Выселить из квартиры";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel4
             // 
@@ -230,6 +260,7 @@ namespace OOP_Cursach_Sakhno.ui
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(237, 379);
             this.listBox1.TabIndex = 0;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -324,12 +355,13 @@ namespace OOP_Cursach_Sakhno.ui
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(439, 529);
+            this.button1.Location = new System.Drawing.Point(426, 529);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(100, 44);
             this.button1.TabIndex = 2;
             this.button1.Text = "Изменить";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -347,6 +379,7 @@ namespace OOP_Cursach_Sakhno.ui
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 16;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // panel5
             // 
@@ -372,18 +405,19 @@ namespace OOP_Cursach_Sakhno.ui
             this.panel6.Size = new System.Drawing.Size(612, 784);
             this.panel6.TabIndex = 24;
             // 
-            // Form1
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1277, 784);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Main";
+            this.Text = "Информация о доме";
             this.panel3.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -427,9 +461,11 @@ namespace OOP_Cursach_Sakhno.ui
         private Panel panel5;
         private Panel panel6;
         private Panel panel7;
-        private TextBox textBox6;
         private Button button3;
         private TextBox textBox8;
         private TextBox textBox7;
+        private NumericUpDown numericUpDown1;
+        private Button button5;
+        private Button button4;
     }
 }

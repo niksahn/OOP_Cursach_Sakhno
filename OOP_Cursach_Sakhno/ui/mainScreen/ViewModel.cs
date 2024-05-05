@@ -14,7 +14,7 @@ namespace OOP_Cursach_Sakhno.ui.mainScreen
 
         const double comByPerson = 10.23;
 
-        static private ScreenState? state;
+        public ScreenState state;
         public event State stateChanged;
 
         public ViewModel()
@@ -35,7 +35,49 @@ namespace OOP_Cursach_Sakhno.ui.mainScreen
                 var commNeedToPay = listOfHab.Count * comByPerson;
                 flatView.Add(new FlatsView(flat.id, flat.commPaid, commNeedToPay, flat.number, listOfHab));
             }
-            updateState(new ScreenState(flatView, habitants.Count, state?.idSelectedFlat, state?.idSelectedHabitant));
+            updateState(new ScreenState(flatView,flats, habitants.Count, state?.idSelectedFlat, state?.idSelectedHabitant));
+        }
+
+        public void selectFlat(int FlatId)
+        {
+            updateState(new ScreenState(state.flats,state.flatDb, state.numberOfHabitants,FlatId,state.idSelectedHabitant));
+        }
+        public void selectHab(int HabId)
+        {
+            updateState(new ScreenState(state.flats, state.flatDb, state.numberOfHabitants, state.idSelectedFlat, HabId));
+        }
+
+        public void changePaid(double paid)
+        {
+            var selectedFlat = state.flatDb.FirstOrDefault((it) => { return it?.id == state.idSelectedFlat; }, null);
+            selectedFlat.commPaid = paid;
+            dbRepo.editFlat(selectedFlat);
+            getFlats();
+        }
+
+        public void changeHab(string name,string surname,string phoneNumber)
+        {
+            if (state.idSelectedHabitant != null) {
+                dbRepo.editHabitant(name,surname,phoneNumber,(int)state.idSelectedHabitant);
+                getFlats();
+            }
+        }
+        
+        public void delFromFlat()
+        {
+            if (state?.idSelectedHabitant != null && state.idSelectedFlat != null)
+            { 
+                dbRepo.deleteHabitantFromFlat((int)state.idSelectedHabitant, (int)state.idSelectedFlat); 
+                getFlats();
+            }
+        }
+        public void delFromHouse()
+        {
+            if (state?.idSelectedHabitant != null)
+            {
+                dbRepo.deleteHabitant((int)state.idSelectedHabitant);
+                getFlats();
+            }
         }
 
         private void updateState(ScreenState _state)
@@ -50,9 +92,10 @@ namespace OOP_Cursach_Sakhno.ui.mainScreen
 
     public class ScreenState
     {
-        public ScreenState(List<FlatsView> flat, int numberOfHabitants, int? idSelectedFlat, int? idSelectedHabitant)
+        public ScreenState(List<FlatsView> flatVeiw,List<Flat> flats, int numberOfHabitants, int? idSelectedFlat, int? idSelectedHabitant)
         {
-            flats = flat;
+            this.flats = flatVeiw;
+            flatDb = flats;
             this.numberOfHabitants = numberOfHabitants;
             this.idSelectedFlat = idSelectedFlat;
             this.idSelectedHabitant = idSelectedHabitant;
@@ -60,15 +103,15 @@ namespace OOP_Cursach_Sakhno.ui.mainScreen
         public ScreenState()
         {
             flats = new List<FlatsView>();
-            idSelectedFlat = 0;
+            idSelectedFlat = 1;
             idSelectedHabitant = 0;
         }
         public List<FlatsView> flats { get; set; }
-
         public int? idSelectedFlat { get; set; }
         public int numberOfHabitants { get; set; }
         public int? idSelectedHabitant { get; set; }
 
+        public List<Flat> flatDb {  get; set; }
         public class FlatsView
         {
             public int id { get; set; }

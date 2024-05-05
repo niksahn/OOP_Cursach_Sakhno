@@ -16,7 +16,8 @@ namespace OOP_Cursach_Sakhno.data.database
 
              private DatabaseContext() : base()
              {
-                Database.EnsureCreated();
+         //   Database.EnsureDeleted();
+            Database.EnsureCreated();
              }
 
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

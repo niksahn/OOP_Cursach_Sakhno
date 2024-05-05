@@ -20,16 +20,17 @@ namespace OOP_Cursach_Sakhno.domain.repository
             });
         }
 
-        public void addHabitant(Habitant hab)
+        public int addHabitant(Habitant hab)
         {
-               db.Habitant.Add(hab);
-               db.SaveChanges();
+             var h = db.Habitant.AddAsync(hab);
+             db.SaveChangesAsync();
+            return h.Result.Entity.Id;
         }
 
-        public void addHabitantToFlat(int habId, int flatId)
+        public Task addHabitantToFlat(int habId, int flatId)
         {
-            db.HabitantList.Add(new HabitantInFlat(habId, flatId));
-            db.SaveChanges();
+            db.HabitantList.AddAsync(new HabitantInFlat(habId, flatId));
+            return db.SaveChangesAsync();
         }
 
         public List<Flat> getFlats()
@@ -48,8 +49,12 @@ namespace OOP_Cursach_Sakhno.domain.repository
             return db.Habitant.Where(h=> habIds.Any(habId => habId.HabitantId == h.Id)).ToList();
         }
 
-        public void editHabitant(Habitant hab)
+        public void editHabitant(string name, string surname, string phoneNumber, int id)
         {
+            var hab = db.Habitant.Find(id);
+            hab.Name = name;
+            hab.SurName = surname;
+            hab.PhoneNumber = phoneNumber;
             db.Habitant.Update(hab);
             db.SaveChanges();
         }
@@ -65,6 +70,9 @@ namespace OOP_Cursach_Sakhno.domain.repository
         public void deleteHabitant(int habId)
         {
             db.Habitant.Where(h=> h.Id == habId).ExecuteDelete();
+            db.HabitantList
+              .Where(h => h.HabitantId == habId)
+              .ExecuteDelete();
             db.SaveChanges();
         }
         public void editFlat(Flat flat) { 

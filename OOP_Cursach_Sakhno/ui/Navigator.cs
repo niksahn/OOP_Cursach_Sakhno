@@ -6,61 +6,56 @@ namespace OOP_Cursach_Sakhno.ui
 {
     public class Navigator
     {
-        private List<NavigatableForm> stack = new List<NavigatableForm>();
-        private List<NavScreen> stackNames = new List<NavScreen>();
+        private Dictionary<NavScreen,NavigatableForm> stack = new Dictionary<NavScreen, NavigatableForm>();
         public void navigate(NavScreen screen)
         {
             if (stack.Count == 0)
             {
                 var form = toForm(screen);
-                stack.Add(form);
-                stackNames.Add(screen);
+                stack.Add(screen,form);
                 Application.Run(form);
             }
-           else if (stackNames.Contains(screen)) 
+           else if (stack.Keys.Contains(screen)) 
            {
-                var formClass = toFormType(screen);
-                var form = stack.First((it) => { return it.GetType() == formClass; });
+                var form = stack[screen];
                 closeLastForm();
-                stack.Remove(form);
-                stack.Add(form);
-                stackNames.Remove(screen);
-                stackNames.Add(screen);
+                stack.Remove(screen);
+                stack.Add(screen,form);
                 form.Show();
            }
             else
             {
                 var form = toForm(screen);
-                form.Show();
+                form?.Show();
                 closeLastForm();
-                stack.Add(form);
-                stackNames.Add(screen);
+                stack.Add(screen,form);
             }
         }
         private void closeLastForm()
         {
             if (stack.Count == 1)
             {
-                stack.Last().Hide();
+                stack.Last().Value.Hide();
             }
-            else stack.Last().Close();
+            else stack.Last().Value.Hide();
         }
         public void pop()
         {
-            stack.RemoveAt(stack.Count - 1);
-            stackNames.RemoveAt(stack.Count - 1);
+            stack.Last().Value.Hide();
+            stack.Remove(stack.Last().Key);
             if(stack.Count == 0) Application.Exit();
-            else stack.Last().Show();
+            else stack.Last().Value.Show();
         }
 
-        public void sendEvent(NavScreen scr)
+        public void sendEvent(NavScreen scr, object ev)
         {
-            var formClass = toFormType(scr);
-            stack
-                .First((it) => { return it.GetType() == formClass;})
-                .sendEvent();
+            if (!stack.ContainsKey(scr))
+            {
+                stack.Add(scr, toForm(scr));
+            }
+            stack[scr].sendEvent(ev);
         }
-        private NavigatableForm toForm(NavScreen scr) { 
+        private NavigatableForm? toForm(NavScreen scr) { 
             switch(scr)
             {
                 case NavScreen.Main:
@@ -69,28 +64,16 @@ namespace OOP_Cursach_Sakhno.ui
                     return new Info(this);
                 case NavScreen.CreateHouse:
                     return new CreateHouse(this);
+                case NavScreen.AddHabitant:
+                    return new AddHabitant(this);
                 default:
-                    return new Info(this);
-            }
-        }
-        private Type toFormType(NavScreen scr)
-        {
-            switch (scr)
-            {
-                case NavScreen.Main:
-                    return typeof(Main);
-                case NavScreen.Info:
-                    return typeof(Info);
-                case NavScreen.CreateHouse:
-                    return typeof(CreateHouse);
-                default:
-                    return typeof(Info);
+                    return null; 
             }
         }
     };
 
    public class NavigatableForm : Form {
-        protected delegate void Event();
+        protected delegate void Event(object ev);
         protected Navigator navigator;
         protected event Event? updateView;
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -99,9 +82,9 @@ namespace OOP_Cursach_Sakhno.ui
            // navigator.pop();
            Application.Exit();
         }
-        public void sendEvent()
+        public void sendEvent(object ev)
         {
-            updateView?.Invoke();
+            updateView?.Invoke(ev);
         }
         public NavigatableForm() { }
         protected NavigatableForm(Navigator _navigator) => navigator = _navigator;
