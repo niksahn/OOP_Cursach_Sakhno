@@ -89,7 +89,7 @@ namespace OOP_Cursach_Sakhno.ui
         }
     };
 
-   public abstract class NavigatableForm : Form {
+   public class NavigatableForm : Form {
         protected delegate void Event();
         protected Navigator navigator;
         protected event Event? updateView;
@@ -103,6 +103,7 @@ namespace OOP_Cursach_Sakhno.ui
         {
             updateView?.Invoke();
         }
+        public NavigatableForm() { }
         protected NavigatableForm(Navigator _navigator) => navigator = _navigator;
     }
     public enum NavScreen { Main, Info, AddHabitant, CreateHouse }
