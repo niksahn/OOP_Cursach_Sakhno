@@ -12,7 +12,7 @@ namespace OOP_Cursach_Sakhno
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Navigator navigator = new Navigator();
+            MineNavigator navigator = new MineNavigator();
             navigator.navigate(NavScreen.Info);
         }
     }

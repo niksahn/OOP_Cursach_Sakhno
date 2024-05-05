@@ -6,9 +6,9 @@ using System.ComponentModel;
 namespace OOP_Cursach_Sakhno.ui
 {
     [Designer(typeof(System.Windows.Forms.Design.WindowsFormsComponentEditor))]
-    public partial class Info : NavigatableForm
+    public partial class Info : NavigatableForm<NavScreen>
     {
-        public Info(Navigator navigator):base(navigator) 
+        public Info(Navigator<NavScreen> navigator):base(navigator) 
         {
             InitializeComponent();
         }
