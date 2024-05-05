@@ -4,24 +4,28 @@ using System.Windows.Forms;
 
 namespace OOP_Cursach_Sakhno.ui
 {
-    public abstract class Navigator<NavScreen>
+    public class Navigator
     {
-        private Dictionary<NavScreen, NavigatableForm<NavScreen>> stack = new Dictionary<NavScreen,NavigatableForm<NavScreen>>();
+        private List<NavigatableForm> stack = new List<NavigatableForm>();
+        private List<NavScreen> stackNames = new List<NavScreen>();
         public void navigate(NavScreen screen)
         {
             if (stack.Count == 0)
             {
                 var form = toForm(screen);
-                stack.Add(screen,form);
+                stack.Add(form);
+                stackNames.Add(screen);
                 Application.Run(form);
             }
-           else if (stack.Keys.Contains(screen)) 
+           else if (stackNames.Contains(screen)) 
            {
                 var formClass = toFormType(screen);
-                var form = stack.First((it) => { return it.GetType() == formClass; }).Value;
+                var form = stack.First((it) => { return it.GetType() == formClass; });
                 closeLastForm();
-                stack.Remove(screen);
-                stack.Add(screen,form);
+                stack.Remove(form);
+                stack.Add(form);
+                stackNames.Remove(screen);
+                stackNames.Add(screen);
                 form.Show();
            }
             else
@@ -29,22 +33,24 @@ namespace OOP_Cursach_Sakhno.ui
                 var form = toForm(screen);
                 form.Show();
                 closeLastForm();
-                stack.Add(screen,form);
+                stack.Add(form);
+                stackNames.Add(screen);
             }
         }
         private void closeLastForm()
         {
             if (stack.Count == 1)
             {
-                stack.Last().Value.Hide();
+                stack.Last().Hide();
             }
-            else stack.Last().Value.Close();
+            else stack.Last().Close();
         }
         public void pop()
         {
-            stack.Remove(stack.Last().Key);
+            stack.RemoveAt(stack.Count - 1);
+            stackNames.RemoveAt(stack.Count - 1);
             if(stack.Count == 0) Application.Exit();
-            else stack.Last().Value.Show();
+            else stack.Last().Show();
         }
 
         public void sendEvent(NavScreen scr)
@@ -52,18 +58,10 @@ namespace OOP_Cursach_Sakhno.ui
             var formClass = toFormType(scr);
             stack
                 .First((it) => { return it.GetType() == formClass;})
-                .Value
                 .sendEvent();
         }
-        protected abstract NavigatableForm<NavScreen> toForm(NavScreen scr);
-        protected abstract Type toFormType(NavScreen scr);
-    };
-
-    public class MineNavigator : Navigator<NavScreen>
-    {
-        protected override NavigatableForm<NavScreen> toForm(NavScreen scr)
-        {
-            switch (scr)
+        private NavigatableForm toForm(NavScreen scr) { 
+            switch(scr)
             {
                 case NavScreen.Main:
                     return new Main(this);
@@ -75,8 +73,7 @@ namespace OOP_Cursach_Sakhno.ui
                     return new Info(this);
             }
         }
-
-        protected override Type toFormType(NavScreen scr)
+        private Type toFormType(NavScreen scr)
         {
             switch (scr)
             {
@@ -90,11 +87,11 @@ namespace OOP_Cursach_Sakhno.ui
                     return typeof(Info);
             }
         }
-    }
+    };
 
-    public class NavigatableForm<NavScreen> : Form {
+   public abstract class NavigatableForm : Form {
         protected delegate void Event();
-        protected Navigator<NavScreen> navigator;
+        protected Navigator navigator;
         protected event Event? updateView;
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
@@ -106,8 +103,7 @@ namespace OOP_Cursach_Sakhno.ui
         {
             updateView?.Invoke();
         }
-        public NavigatableForm() { }
-        protected NavigatableForm(Navigator<NavScreen> _navigator) => navigator = _navigator;
+        protected NavigatableForm(Navigator _navigator) => navigator = _navigator;
     }
     public enum NavScreen { Main, Info, AddHabitant, CreateHouse }
 }

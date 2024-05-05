@@ -7,9 +7,9 @@ using System.ComponentModel;
 namespace OOP_Cursach_Sakhno.ui.createHouse
 {
     [Designer(typeof(System.Windows.Forms.Design.WindowsFormsComponentEditor))]
-    public partial class CreateHouse : NavigatableForm<NavScreen>
+    public partial class CreateHouse : NavigatableForm
     {
-        public CreateHouse(Navigator<NavScreen> navigator)  : base(navigator)
+        public CreateHouse(Navigator navigator)  : base(navigator)
         {
             InitializeComponent();
         }

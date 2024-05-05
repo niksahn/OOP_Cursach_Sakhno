@@ -4,16 +4,15 @@ using System.ComponentModel;
 namespace OOP_Cursach_Sakhno.ui
 {
     [Designer(typeof(System.Windows.Forms.Design.WindowsFormsComponentEditor))]
-    public partial class Main : NavigatableForm<NavScreen>
+    public partial class Main : NavigatableForm 
     {
         private ViewModel viewModel;
 
-        public Main(Navigator<NavScreen> navigator) : base(navigator)
+        public Main(Navigator navigator) : base(navigator)
         {
             InitializeComponent();
             viewModel = new ViewModel();
             viewModel.stateChanged += showState;
-            updateView+= ()=>{ viewModel.getFlats(); };
             viewModel.getFlats();
         }
 
