@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OOP_Cursach_Sakhno.data.models
+﻿namespace OOP_Cursach_Sakhno.data.models
 {
     public class Flat
     {
-        int id { get; set; }
-        double commPaid { get; set; }
-        int number { get; set; }
+        public int id { get; set; }
+        public double commPaid { get; set; }
+        public int number { get; set; }
+
+        public Flat(double commPaid, int number)
+        {
+            this.commPaid = commPaid;
+            this.number = number;
+        }
     }
 }

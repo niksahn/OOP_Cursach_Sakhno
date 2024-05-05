@@ -1,6 +1,9 @@
-﻿namespace OOP_Cursach_Sakhno
+﻿using System.ComponentModel;
+
+namespace OOP_Cursach_Sakhno.ui
 {
-    partial class Form1
+    [Designer(typeof(System.Windows.Forms.Design.WindowsFormsComponentEditor))]
+    partial class Main
     {
         /// <summary>
         ///  Required designer variable.
@@ -76,7 +79,6 @@
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(100, 23);
             this.textBox5.TabIndex = 23;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // label9
             // 
@@ -144,6 +146,7 @@
             this.button3.TabIndex = 7;
             this.button3.Text = "Изменить";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label7
             // 
@@ -196,7 +199,6 @@
             this.label12.Size = new System.Drawing.Size(180, 15);
             this.label12.TabIndex = 3;
             this.label12.Text = "Число проживающих жильцов";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // panel1
             // 
@@ -246,6 +248,7 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "Добавить";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel2
             // 

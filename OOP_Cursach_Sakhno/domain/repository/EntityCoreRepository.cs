@@ -1,48 +1,80 @@
-﻿using OOP_Cursach_Sakhno.data.database;
+﻿using Microsoft.EntityFrameworkCore;
+using OOP_Cursach_Sakhno.data.database;
 using OOP_Cursach_Sakhno.data.models;
 using OOP_Cursach_Sakhno.data.repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OOP_Cursach_Sakhno.domain.repository
 {
-    class EntityCoreRepository : DabaBaseRepository
+    class EntityCoreRepository : DataBaseRepository
     {
         private DatabaseContext db;
         public EntityCoreRepository(DatabaseContext datab) { 
             db=datab;
         }
-        public void addFlat(Flat flat)
+        public Task addFlat(Flat flat)
         {
-            throw new NotImplementedException();
+            return Task.Run(() =>
+            {
+                db.Flats.AddAsync(flat);
+                db.SaveChangesAsync();
+            });
         }
 
-        public void addHabitant(Flat flat)
+        public void addHabitant(Habitant hab)
         {
-            throw new NotImplementedException();
+               db.Habitant.Add(hab);
+               db.SaveChanges();
         }
 
         public void addHabitantToFlat(int habId, int flatId)
         {
-            throw new NotImplementedException();
+            db.HabitantList.Add(new HabitantInFlat(habId, flatId));
+            db.SaveChanges();
         }
 
         public List<Flat> getFlats()
         {
-            throw new NotImplementedException();
+            return db.Flats.ToList();     
         }
 
         public List<Habitant> getHabitants()
         {
-            throw new NotImplementedException();
+            return db.Habitant.ToList();
         }
 
         public List<Habitant> getHabitantsInFlat(int flatId)
         {
-            throw new NotImplementedException();
+            var habIds = db.HabitantList.Where(h=> h.FlatId == flatId);
+            return db.Habitant.Where(h=> habIds.Any(habId => habId.HabitantId == h.Id)).ToList();
+        }
+
+        public void editHabitant(Habitant hab)
+        {
+            db.Habitant.Update(hab);
+            db.SaveChanges();
+        }
+
+        public void deleteHabitantFromFlat(int habId, int flatId)
+        {
+            db.HabitantList
+                .Where(h => h.FlatId == flatId && h.HabitantId == habId)
+                .ExecuteDelete();
+            db.SaveChanges();
+        }
+
+        public void deleteHabitant(int habId)
+        {
+            db.Habitant.Where(h=> h.Id == habId).ExecuteDelete();
+            db.SaveChanges();
+        }
+        public void editFlat(Flat flat) { 
+            db.Update(flat);
+            db.SaveChanges();
+        }
+
+        List<HabitantInFlat> DataBaseRepository.getHabitantsList()
+        {
+            return db.HabitantList.ToList();
         }
     }
 }

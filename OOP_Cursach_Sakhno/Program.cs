@@ -1,3 +1,6 @@
+using Microsoft.Extensions.DependencyInjection;
+using OOP_Cursach_Sakhno.ui;
+
 namespace OOP_Cursach_Sakhno
 {
     internal static class Program
@@ -9,7 +12,8 @@ namespace OOP_Cursach_Sakhno
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Navigator navigator = new Navigator();
+            navigator.navigate(NavScreen.Info);
         }
     }
 }
