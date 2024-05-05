@@ -50,8 +50,8 @@ namespace OOP_Cursach_Sakhno.ui
                 navigator.sendEvent(NavScreen.Main,null);
             } else {
                 MessageBox.Show(
-                    "Заполните все поля",
-                    "Поля не заполнены"
+                    "Заполните все поля корректно",
+                    "Поля некорректно заполнены"
                 );
             }
         }

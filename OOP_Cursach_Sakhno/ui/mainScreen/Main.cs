@@ -86,11 +86,14 @@ namespace OOP_Cursach_Sakhno.ui
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var ind = Int32.Parse(listBox1?.SelectedItem?.ToString().Split()[0]);
-            var selectedHab = ind;
-            if (selectedHab != viewModel?.state?.idSelectedHabitant)
+            if (listBox1?.SelectedItem != null)
             {
+                var ind = Int32.Parse(listBox1?.SelectedItem?.ToString().Split()[0]);
+                var selectedHab = ind;
+                if (selectedHab != viewModel?.state?.idSelectedHabitant)
+                {
                     viewModel?.selectHab(selectedHab);
+                }
             }
         }
 
@@ -103,8 +106,8 @@ namespace OOP_Cursach_Sakhno.ui
             else
             {
                 MessageBox.Show(
-                    "Заполните все поля",
-                    "Поля не заполнены"
+                    "Заполните все поля корректно",
+                    "Поля некорректно заполнены"
                 );
             }
         }

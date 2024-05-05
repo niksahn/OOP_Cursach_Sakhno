@@ -64,6 +64,7 @@ namespace OOP_Cursach_Sakhno.domain.repository
             db.HabitantList
                 .Where(h => h.FlatId == flatId && h.HabitantId == habId)
                 .ExecuteDelete();
+            if(db.HabitantList.Where(h => h.HabitantId == habId).Count() == 0) db.Habitant.Where(h => h.Id == habId).ExecuteDelete();
             db.SaveChanges();
         }
 
