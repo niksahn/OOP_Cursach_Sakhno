@@ -19,7 +19,7 @@ namespace OOP_Cursach_Sakhno.ui.createHouse
             DataBaseRepository db = new EntityCoreRepository(DatabaseContext.Current);
             for(int i=1;i<numericUpDown1.Value+1; i++)
             {
-               await db.addFlat(new Flat(0.0, i));
+                await Task.Run(() => { db.addFlat(new Flat(0.0, i)); });
             }
             navigator.navigate(NavScreen.Main);
         }

@@ -26,8 +26,8 @@ namespace OOP_Cursach_Sakhno.ui
         {
             if (viewModel?.state?.idSelectedFlat != null)
             {
-                navigator.sendEvent(NavScreen.AddHabitant, viewModel.state.idSelectedFlat);
                 navigator.navigate(NavScreen.AddHabitant);
+                navigator.sendEvent(NavScreen.AddHabitant, viewModel.state.idSelectedFlat);
             }
             else
             {
@@ -68,6 +68,12 @@ namespace OOP_Cursach_Sakhno.ui
                 textBox1.Text = selectedhab.Name;
                 textBox2.Text = selectedhab.SurName;
                 textBox3.Text = selectedhab.PhoneNumber;
+            }
+            else
+            {
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
             }
         }
 

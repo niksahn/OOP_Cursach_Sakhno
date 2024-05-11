@@ -3,26 +3,21 @@ using OOP_Cursach_Sakhno.data.models;
 using OOP_Cursach_Sakhno.data.repository;
 using OOP_Cursach_Sakhno.domain.repository;
 using OOP_Cursach_Sakhno.utils;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace OOP_Cursach_Sakhno.ui
 {
     public partial class AddHabitant : NavigatableForm
     {
         DataBaseRepository db ;
+        int selected = -1;
         public AddHabitant(Navigator navigator) : base(navigator)
         {
             InitializeComponent();
             db = new EntityCoreRepository(DatabaseContext.Current);
             addFlats();
+            updateView += (ob) => {
+                selected = (int)ob;
+            };
         }
 
         private async void addFlats()
@@ -32,9 +27,7 @@ namespace OOP_Cursach_Sakhno.ui
             {
                 checkedListBox1.Items.Add(flat.number);
             });
-            updateView += (ob) => {
-                checkedListBox1.SetItemChecked((int)ob, true);
-            };
+            if(selected!=-1) checkedListBox1.SetItemChecked(selected - 1, true);
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -44,7 +37,7 @@ namespace OOP_Cursach_Sakhno.ui
                 var id = await Task.Run(() => { return db.addHabitant(habitant); });
                 foreach(var i in checkedListBox1.CheckedItems)
                 {
-                  await  db.addHabitantToFlat(id,(int) i);
+                    await Task.Run(() => { db.addHabitantToFlat(id, (int)i); });
                 }
                 navigator.pop();
                 navigator.sendEvent(NavScreen.Main,null);

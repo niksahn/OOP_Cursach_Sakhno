@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="data\db.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    <None Update="db.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

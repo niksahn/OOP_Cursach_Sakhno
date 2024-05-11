@@ -67,7 +67,9 @@ namespace OOP_Cursach_Sakhno.ui.mainScreen
         {
             if (state?.idSelectedHabitant != null && state.idSelectedFlat != null)
             { 
-                dbRepo.deleteHabitantFromFlat((int)state.idSelectedHabitant, (int)state.idSelectedFlat); 
+                dbRepo.deleteHabitantFromFlat((int)state.idSelectedHabitant, (int)state.idSelectedFlat);
+                updateState(new ScreenState(state.flats, state.flatDb, state.numberOfHabitants, state.idSelectedFlat, null));
+
                 getFlats();
             }
         }
@@ -76,6 +78,7 @@ namespace OOP_Cursach_Sakhno.ui.mainScreen
             if (state?.idSelectedHabitant != null)
             {
                 dbRepo.deleteHabitant((int)state.idSelectedHabitant);
+                updateState(new ScreenState(state.flats, state.flatDb, state.numberOfHabitants, state.idSelectedFlat, null));
                 getFlats();
             }
         }

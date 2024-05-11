@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using OOP_Cursach_Sakhno.data.models;
-using System.Collections;
 
 namespace OOP_Cursach_Sakhno.data.database
 {
@@ -16,7 +15,6 @@ namespace OOP_Cursach_Sakhno.data.database
 
              private DatabaseContext() : base()
              {
-         //   Database.EnsureDeleted();
             Database.EnsureCreated();
              }
 
@@ -25,7 +23,7 @@ namespace OOP_Cursach_Sakhno.data.database
                 
             var config = new ConfigurationBuilder()
                                 .SetBasePath(Directory.GetCurrentDirectory())
-                                .AddJsonFile("C:\\projects\\OOP_Cursach_Sakhno\\OOP_Cursach_Sakhno\\data\\db.json")
+                                .AddJsonFile("db.json")
                                 .Build();
 
                 optionsBuilder.UseSqlite(config.GetConnectionString("DefaultConnection"));

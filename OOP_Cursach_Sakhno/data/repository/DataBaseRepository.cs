@@ -8,9 +8,9 @@ namespace OOP_Cursach_Sakhno.data.repository
             public List<Flat> getFlats();
             public List<Habitant> getHabitantsInFlat(int flatId);
             public List<HabitantInFlat> getHabitantsList();
-            public Task addFlat(Flat flat);
+            public void addFlat(Flat flat);
             public int addHabitant(Habitant hab);
-            public Task addHabitantToFlat(int habId, int flatId);
+            public void addHabitantToFlat(int habId, int flatId);
             public void editHabitant(string name, string surname, string phoneNumber, int id);
             public void deleteHabitantFromFlat(int habId, int flatId);
             public void deleteHabitant(int habId);

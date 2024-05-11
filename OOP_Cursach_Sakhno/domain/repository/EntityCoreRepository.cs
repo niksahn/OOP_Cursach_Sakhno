@@ -11,13 +11,10 @@ namespace OOP_Cursach_Sakhno.domain.repository
         public EntityCoreRepository(DatabaseContext datab) { 
             db=datab;
         }
-        public Task addFlat(Flat flat)
-        {
-            return Task.Run(() =>
-            {
-                db.Flats.AddAsync(flat);
-                db.SaveChangesAsync();
-            });
+        public void addFlat(Flat flat)
+        {            
+          db.Flats.AddAsync(flat);
+          db.SaveChangesAsync();
         }
 
         public int addHabitant(Habitant hab)
@@ -27,10 +24,10 @@ namespace OOP_Cursach_Sakhno.domain.repository
             return h.Result.Entity.Id;
         }
 
-        public Task addHabitantToFlat(int habId, int flatId)
+        public void addHabitantToFlat(int habId, int flatId)
         {
             db.HabitantList.AddAsync(new HabitantInFlat(habId, flatId));
-            return db.SaveChangesAsync();
+            db.SaveChangesAsync();
         }
 
         public List<Flat> getFlats()
