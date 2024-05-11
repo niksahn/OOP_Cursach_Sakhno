@@ -10,15 +10,15 @@ namespace OOP_Cursach_Sakhno.data.database
         public static DatabaseContext Current => instance;
 
         public DbSet<Flat> Flats => Set<Flat>();
-             public DbSet<Habitant> Habitant => Set<Habitant>();
-             public DbSet<HabitantInFlat> HabitantList => Set<HabitantInFlat>();
+        public DbSet<Habitant> Habitant => Set<Habitant>();
+        public DbSet<HabitantInFlat> HabitantList => Set<HabitantInFlat>();
 
-             private DatabaseContext() : base()
+        private DatabaseContext() : base()
              {
-            Database.EnsureCreated();
+                Database.EnsureCreated();
              }
 
-            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
                 
             var config = new ConfigurationBuilder()

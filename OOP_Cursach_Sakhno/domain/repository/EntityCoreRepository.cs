@@ -11,6 +11,10 @@ namespace OOP_Cursach_Sakhno.domain.repository
         public EntityCoreRepository(DatabaseContext datab) { 
             db=datab;
         }
+        public List<Flat> getFlatsByHab(int habId) { 
+            List<int> flats = db.HabitantList.Where(h => h.HabitantId==habId).Select(h=> h.FlatId).ToList();
+            return db.Flats.Where(f => flats.Contains(f.id)).ToList();
+        }
         public void addFlat(Flat flat)
         {            
           db.Flats.AddAsync(flat);
@@ -78,6 +82,9 @@ namespace OOP_Cursach_Sakhno.domain.repository
             db.SaveChanges();
         }
 
+        public List<Habitant> findHabitants(String name) {
+           return db.Habitant.Where(h => (h.Name + " " + h.SurName).Contains(name)).ToList();
+        }
         List<HabitantInFlat> DataBaseRepository.getHabitantsList()
         {
             return db.HabitantList.ToList();

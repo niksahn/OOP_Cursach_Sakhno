@@ -1,6 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
-using OOP_Cursach_Sakhno.ui.createHouse;
-using System.Windows.Forms;
+﻿using OOP_Cursach_Sakhno.ui.createHouse;
+using OOP_Cursach_Sakhno.ui.search;
 
 namespace OOP_Cursach_Sakhno.ui
 {
@@ -66,6 +65,8 @@ namespace OOP_Cursach_Sakhno.ui
                     return new CreateHouse(this);
                 case NavScreen.AddHabitant:
                     return new AddHabitant(this);
+                case NavScreen.SerachRez:
+                    return new Search(this);
                 default:
                     return null; 
             }
@@ -89,5 +90,5 @@ namespace OOP_Cursach_Sakhno.ui
         public NavigatableForm() { }
         protected NavigatableForm(Navigator _navigator) => navigator = _navigator;
     }
-    public enum NavScreen { Main, Info, AddHabitant, CreateHouse }
+    public enum NavScreen { Main, Info, AddHabitant, CreateHouse, SerachRez }
 }

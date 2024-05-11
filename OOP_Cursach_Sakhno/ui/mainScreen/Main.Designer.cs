@@ -64,6 +64,9 @@ namespace OOP_Cursach_Sakhno.ui
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -217,7 +220,7 @@ namespace OOP_Cursach_Sakhno.ui
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(25, 152);
+            this.panel1.Location = new System.Drawing.Point(17, 153);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(631, 619);
             this.panel1.TabIndex = 18;
@@ -383,6 +386,9 @@ namespace OOP_Cursach_Sakhno.ui
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.button6);
+            this.panel5.Controls.Add(this.label13);
+            this.panel5.Controls.Add(this.textBox6);
             this.panel5.Controls.Add(this.panel1);
             this.panel5.Controls.Add(this.label8);
             this.panel5.Controls.Add(this.textBox4);
@@ -391,6 +397,32 @@ namespace OOP_Cursach_Sakhno.ui
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(659, 784);
             this.panel5.TabIndex = 24;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(451, 122);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 24;
+            this.button6.Text = "Найти";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(129, 127);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(86, 15);
+            this.label13.TabIndex = 23;
+            this.label13.Text = "Найти жильца";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(221, 123);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(206, 23);
+            this.textBox6.TabIndex = 22;
             // 
             // panel6
             // 
@@ -467,5 +499,8 @@ namespace OOP_Cursach_Sakhno.ui
         private NumericUpDown numericUpDown1;
         private Button button5;
         private Button button4;
+        private Button button6;
+        private Label label13;
+        private TextBox textBox6;
     }
 }

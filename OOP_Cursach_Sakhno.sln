@@ -5,6 +5,18 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOP_Cursach_Sakhno", "OOP_Cursach_Sakhno\OOP_Cursach_Sakhno.csproj", "{6D86C917-84CB-46FF-BCD9-5C75E7D81B28}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{6BCBE1E6-A018-454A-BBF2-4F455E257B1C}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Users\niksa\OneDrive\Рабочий стол\курсач\структуры и алгоритмы од\курсач\Setup1\Setup1.sln = ..\..\Users\niksa\OneDrive\Рабочий стол\курсач\структуры и алгоритмы од\курсач\Setup1\Setup1.sln
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HomeApp", "Setup\Setup.vdproj", "{81D52C0B-2C85-4441-AD2C-E489FF08A168}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{689ECAC7-7206-4CCE-8206-EC2CB5400E7B}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +27,8 @@ Global
 		{6D86C917-84CB-46FF-BCD9-5C75E7D81B28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D86C917-84CB-46FF-BCD9-5C75E7D81B28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D86C917-84CB-46FF-BCD9-5C75E7D81B28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81D52C0B-2C85-4441-AD2C-E489FF08A168}.Debug|Any CPU.ActiveCfg = Debug
+		{81D52C0B-2C85-4441-AD2C-E489FF08A168}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,6 +19,10 @@ namespace OOP_Cursach_Sakhno.ui
                 selected = (int)ob;
             };
         }
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            navigator.pop();
+        }
 
         private async void addFlats()
         {

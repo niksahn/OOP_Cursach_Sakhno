@@ -69,7 +69,6 @@ namespace OOP_Cursach_Sakhno.ui.mainScreen
             { 
                 dbRepo.deleteHabitantFromFlat((int)state.idSelectedHabitant, (int)state.idSelectedFlat);
                 updateState(new ScreenState(state.flats, state.flatDb, state.numberOfHabitants, state.idSelectedFlat, null));
-
                 getFlats();
             }
         }
@@ -113,7 +112,6 @@ namespace OOP_Cursach_Sakhno.ui.mainScreen
         public int? idSelectedFlat { get; set; }
         public int numberOfHabitants { get; set; }
         public int? idSelectedHabitant { get; set; }
-
         public List<Flat> flatDb {  get; set; }
         public class FlatsView
         {

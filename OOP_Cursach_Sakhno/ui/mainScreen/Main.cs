@@ -49,6 +49,7 @@ namespace OOP_Cursach_Sakhno.ui
             {
                 comboBox1.Items.Add(i.number);
             }
+            var selInd = listBox1.SelectedIndex;
             listBox1.Items.Clear();
             textBox7.Text = selectedFlat?.habitants.Count.ToString();
             if(selectedFlat?.commPaid!=null) numericUpDown1.Value = (decimal)selectedFlat.commPaid;
@@ -68,6 +69,7 @@ namespace OOP_Cursach_Sakhno.ui
                 textBox1.Text = selectedhab.Name;
                 textBox2.Text = selectedhab.SurName;
                 textBox3.Text = selectedhab.PhoneNumber;
+                listBox1.SelectedIndex = selInd;
             }
             else
             {
@@ -126,6 +128,13 @@ namespace OOP_Cursach_Sakhno.ui
         private void button5_Click(object sender, EventArgs e)
         {
             viewModel.delFromHouse();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+           
+                navigator.navigate(NavScreen.SerachRez);
+                navigator.sendEvent(NavScreen.SerachRez, textBox6.Text);
         }
     }
 }
