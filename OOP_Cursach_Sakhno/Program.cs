@@ -1,4 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
 using OOP_Cursach_Sakhno.ui;
 
 namespace OOP_Cursach_Sakhno

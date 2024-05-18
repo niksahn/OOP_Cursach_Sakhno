@@ -84,7 +84,7 @@ namespace OOP_Cursach_Sakhno.ui.createHouse
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "CreateHouse";
-            this.Text = "CreateHouse";
+            this.Text = "Создать дом";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

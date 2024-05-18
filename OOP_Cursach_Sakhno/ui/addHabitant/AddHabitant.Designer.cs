@@ -173,7 +173,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Name = "AddHabitant";
-            this.Text = "AddHabitant";
+            this.Text = "Добавить жильца";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);

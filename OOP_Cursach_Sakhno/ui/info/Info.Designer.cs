@@ -74,7 +74,7 @@ namespace OOP_Cursach_Sakhno.ui
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Info";
-            this.Text = "Info";
+            this.Text = "Информация";
             this.ResumeLayout(false);
             this.PerformLayout();
 

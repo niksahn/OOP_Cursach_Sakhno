@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,13 +43,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -59,6 +59,33 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(810, 619);
             this.panel1.TabIndex = 19;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.listBox2);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Location = new System.Drawing.Point(572, 65);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(200, 448);
+            this.panel3.TabIndex = 8;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 15;
+            this.listBox2.Location = new System.Drawing.Point(17, 97);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(170, 289);
+            this.listBox2.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(170, 15);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Зарегестрирован в квартирах";
             // 
             // panel4
             // 
@@ -164,48 +191,21 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Имя";
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.listBox2);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Location = new System.Drawing.Point(572, 65);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 448);
-            this.panel3.TabIndex = 8;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(170, 15);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Зарегестрирован в квартирах";
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 15;
-            this.listBox2.Location = new System.Drawing.Point(17, 97);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(170, 289);
-            this.listBox2.TabIndex = 9;
-            // 
-            // search
+            // Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 631);
             this.Controls.Add(this.panel1);
-            this.Name = "search";
-            this.Text = "search";
+            this.Name = "Search";
+            this.Text = "Результаты поиска";
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
