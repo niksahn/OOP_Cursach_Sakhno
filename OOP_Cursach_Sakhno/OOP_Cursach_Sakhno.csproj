@@ -6,7 +6,15 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <StartupObject>OOP_Cursach_Sakhno.Program</StartupObject>
+    <ApplicationIcon>home.ico</ApplicationIcon>
+    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+    <AssemblyName>Home</AssemblyName>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="home.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />

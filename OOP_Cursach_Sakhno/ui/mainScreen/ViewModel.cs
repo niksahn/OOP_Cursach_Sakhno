@@ -12,7 +12,7 @@ namespace OOP_Cursach_Sakhno.ui.mainScreen
         private DataBaseRepository dbRepo;
         private static readonly object _locker = new object();
 
-        const double comByPerson = 10.23;
+        const double comByPerson = 1023;
 
         public ScreenState state;
         public event State stateChanged;
@@ -106,7 +106,7 @@ namespace OOP_Cursach_Sakhno.ui.mainScreen
         {
             flats = new List<FlatsView>();
             idSelectedFlat = 1;
-            idSelectedHabitant = 0;
+            idSelectedHabitant = 0; 
         }
         public List<FlatsView> flats { get; set; }
         public int? idSelectedFlat { get; set; }

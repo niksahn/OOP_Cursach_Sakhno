@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 namespace OOP_Cursach_Sakhno.ui
 {
+
     public partial class Main : NavigatableForm 
     {
         private ViewModel viewModel;
@@ -16,6 +17,7 @@ namespace OOP_Cursach_Sakhno.ui
             viewModel.stateChanged += showState;
             viewModel.getFlats();
             updateView += (ob) => { viewModel.getFlats(); };
+            HandleAutoSize(dataGridView1);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -38,6 +40,14 @@ namespace OOP_Cursach_Sakhno.ui
             }
         }
 
+        public void HandleAutoSize(DataGridView dg)
+        {
+          var width = dg.Columns.GetColumnsWidth(DataGridViewElementStates.None);
+          var height = dg.Rows.GetRowsHeight(DataGridViewElementStates.None);
+          dg.Width= width;
+          dg.Height= height;
+          dg.Size = new Size(width, height);
+        }
         private void showState(ScreenState state)
         {
             var selectedFlat = state.flats.FirstOrDefault((it) => { return it?.id == state.idSelectedFlat; }, null);
@@ -77,6 +87,17 @@ namespace OOP_Cursach_Sakhno.ui
                 textBox2.Text = "";
                 textBox3.Text = "";
             }
+
+            var flatsDolg = state.flats.FindAll((i) => { return i.commNeedToPay > i.commPaid; });
+            dataGridView1.Rows.Clear();
+            flatsDolg.ForEach((i) =>
+            {
+                dataGridView1.Rows.Add(i.number,i.habitants.Count,i.commNeedToPay,i.commPaid,i.commNeedToPay-i.commPaid);
+            });
+            var width = dataGridView1.Columns.GetColumnsWidth(DataGridViewElementStates.None);
+            var height = dataGridView1.Rows.GetRowsHeight(DataGridViewElementStates.None)+60;
+            dataGridView1.Height = height;
+            dataGridView1.ClientSize = new Size(width, height);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -135,6 +156,16 @@ namespace OOP_Cursach_Sakhno.ui
            
                 navigator.navigate(NavScreen.SerachRez);
                 navigator.sendEvent(NavScreen.SerachRez, textBox6.Text);
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

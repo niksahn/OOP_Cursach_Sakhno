@@ -20,13 +20,15 @@ namespace OOP_Cursach_Sakhno.data.database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
-                
-            var config = new ConfigurationBuilder()
-                                .SetBasePath(Directory.GetCurrentDirectory())
-                                .AddJsonFile("db.json")
-                                .Build();
 
-                optionsBuilder.UseSqlite(config.GetConnectionString("DefaultConnection"));
-            }
+            /* var config = new ConfigurationBuilder()
+                                 .SetBasePath(Directory.GetCurrentDirectory())
+                                 .AddJsonFile("db.json")
+                                 .Build();
+            */
+            //  optionsBuilder.UseSqlite(config.GetConnectionString("DefaultConnection"));
+            optionsBuilder.UseSqlite("Data Source=home.db");
+
+        }
     }
 }

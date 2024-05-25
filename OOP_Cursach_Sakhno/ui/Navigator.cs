@@ -40,10 +40,15 @@ namespace OOP_Cursach_Sakhno.ui
         }
         public void pop()
         {
-            stack.Last().Value.Hide();
-            stack.Remove(stack.Last().Key);
-            if(stack.Count == 0) Application.Exit();
-            else stack.Last().Value.Show();
+            try
+            {
+                stack.Last().Value.Hide();
+                stack.Remove(stack.Last().Key);
+                if (stack.Count == 0) Application.Exit();
+                else stack.Last().Value.Show();
+            }
+            catch(Exception ex)
+            {}
         }
 
         public void sendEvent(NavScreen scr, object ev)

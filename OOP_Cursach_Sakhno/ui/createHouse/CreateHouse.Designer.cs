@@ -60,9 +60,24 @@ namespace OOP_Cursach_Sakhno.ui.createHouse
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(242, 94);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
             this.numericUpDown1.TabIndex = 2;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // button1
             // 
